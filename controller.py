@@ -48,20 +48,30 @@ class Controller(QMainWindow, Ui_LabMenu):
 
     def cookie_add(self):
         '''everytime button is pressed add cookie'''
-        pass
+        self.cookie += 1
+        self.cookie_amount += 1.5
+        self.ReceiptLabel.setText(f"Cookie = ${self.cookie_amount}")
+
+
 
     def water_add(self):
         '''everytime button is pressed add water'''
-        pass
+        self.water += 1
+        self.water_amount += 1
+        self.ReceiptLabel.setText(f"Add Water = ${self.water_amount}")
 
     def sandwich_add(self):
-
         '''everytime button is pressed add sandwich'''
-        pass
+        self.sandwich += 1
+        self.sandwich_amount += 4
+        self.ReciptLabel.setText(f"Add Sandwich = ${self.sandwich_amount}")
 
     def cookie_remove(self):
         '''everytime button is pressed remove cookie'''
-        pass
+        if self.cookie >= 0:
+            self.cookie -= 1
+            self.cookie_amount -= 1.5
+            self.reciptLabel.setText(f'Remove {self.cookie} Cookie = ${self.cookie_amount}')
 
     def water_remove(self):
         '''everytime button is pressed remove water'''
