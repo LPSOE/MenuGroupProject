@@ -15,7 +15,7 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.Add_sandwich.clicked.connect(lambda: self.sandwich_add())
         self.Remove_cookie.clicked.connect(lambda: self.cookie_remove())
         self.Remove_water.clicked.connect(lambda: self.water_remove())
-        self.Remove_sandwich.clicked.connect(lambda: self.water_remove())
+        self.Remove_sandwich.clicked.connect(lambda: self.sandwich_remove())
 
         self.menulabel.setText(f"               Welcome \n\n\n              Customers!")
 
@@ -28,9 +28,9 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.Remove_water.setHidden(True)
         self.Remove_sandwich.setHidden(True)
 
-        self.cookie = float(0.00)
-        self.sandwich = float(0.00)
-        self.water = float(0.00)
+        self.cookie = float(1.50)
+        self.sandwich = float(4.00)
+        self.water = float(1.00)
         self.customer_total = float(0.00)
         self.cookie_amount = int(0)
         self.sandwich_amount = int(0)
@@ -44,13 +44,7 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.Remove_cookie.setHidden(False)
         self.Remove_water.setHidden(False)
         self.Remove_sandwich.setHidden(False)
-    # cookie = 0.00
-    # sandwich = 0.00
-    # water = 0.00
-    # customer_total = 0.00
-    # cookie_amount = 0
-    # sandwich_amount = 0
-    # water_amount = 0
+
 
     def cookie_add(self):
         '''everytime button is pressed add cookie'''
@@ -70,22 +64,30 @@ class Controller(QMainWindow, Ui_LabMenu):
 
     def cookie_remove(self):
         '''everytime button is pressed remove cookie'''
-        if self.cookie_amount >= 1.5:
-            self.cookie_amount -= 1.5
-            self.customer_total -= 1.5
+        if self.cookie_amount <= 0:
+            self.cookie_amount -= 0
+        else:
+            self.cookie_amount -= 1
             self.menulabel.setText(f"\n\n--CART MENU--\n\n ({self.cookie_amount})Cookie - $1.50\n ({self.sandwich_amount})Sandwich - $4.00\n ({self.water_amount})Water - $1.00")
 
     def water_remove(self):
         '''everytime button is pressed remove water'''
-        #if self.water_amount >= 1:
-        #    self.water_amount -= 1
-        #    self.customer_total -= 1
+        if self.water_amount <= 0:
+            self.water_amount -= 0
+        else:
+            self.water_amount -= 1
+            self.menulabel.setText(f"\n\n--CART MENU--\n\n ({self.cookie_amount})Cookie - $1.50\n ({self.sandwich_amount})Sandwich - $4.00\n ({self.water_amount})Water - $1.00")
+
+
 
     def sandwich_remove(self):
         '''everytime button is pressed remove sandwich'''
-        #if self.sandwich_amount >= 4:
-        #    self.sandwich_amount -= 4
-        #    self.customer_total -= 4
+        if self.sandwich_amount <= 0:
+            self.sandwich_amount -= 0
+        else:
+            self.sandwich_amount -= 1
+            self.menulabel.setText(f"\n\n--CART MENU--\n\n ({self.cookie_amount})Cookie - $1.50\n ({self.sandwich_amount})Sandwich - $4.00\n ({self.water_amount})Water - $1.00")
+
 
 
     def shop(self):
@@ -94,7 +96,14 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.ExitButton.setHidden(False)
 
     def receipt(self):
-        pass
+
+        self.customer_total = (self.cookie_amount * self.cookie) + (self.sandwich_amount * self.sandwich) + (
+                    self.water_amount * self.water)
+        self.ReceiptLabel.setText(
+            f"\tReceipt\n({self.cookie_amount})Cookie......................${self.cookie_amount * self.cookie:.2f}\n"
+            f"({self.sandwich_amount})Sandwich......................${self.sandwich_amount * self.sandwich:.2f}\n"
+            f"({self.water_amount})Water......................${self.water_amount * self.water:.2f}\n\n\n"
+            f"Total Amount................${self.customer_total:.2f}")
 
     def exit(self):
         '''add up the total cost and label everything'''
@@ -106,5 +115,4 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.Remove_sandwich.setHidden(True)
         self.menulabel.clear()
         self.ExitButton.setHidden(True)
-        self.ReceiptLabel.setText(f"Receipt\nTotal Amount \n Cookie =${self.cookie_amount:.2f} \n Water = \t ${self.water_amount:.2f} \nSandwich = ${self.sandwich_amount:.2f} \n Total = ${self.customer_total:.2f}")
-
+        self.receipt()
