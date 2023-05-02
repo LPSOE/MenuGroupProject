@@ -15,6 +15,8 @@ class Ui_LabMenu(object):
     def setupUi(self, LabMenu):
         LabMenu.setObjectName("LabMenu")
         LabMenu.resize(800, 600)
+        LabMenu.setMinimumSize(QtCore.QSize(800, 600))
+        LabMenu.setMaximumSize(QtCore.QSize(800, 600))
         font = QtGui.QFont()
         font.setPointSize(30)
         LabMenu.setFont(font)
@@ -41,7 +43,7 @@ class Ui_LabMenu(object):
         self.ExitButton.setFont(font)
         self.ExitButton.setObjectName("ExitButton")
         self.ReceiptLabel = QtWidgets.QLabel(self.centralwidget)
-        self.ReceiptLabel.setGeometry(QtCore.QRect(270, 40, 241, 241))
+        self.ReceiptLabel.setGeometry(QtCore.QRect(110, 40, 591, 241))
         font = QtGui.QFont()
         font.setPointSize(15)
         self.ReceiptLabel.setFont(font)
