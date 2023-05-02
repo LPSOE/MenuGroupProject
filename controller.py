@@ -44,13 +44,7 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.Remove_cookie.setHidden(False)
         self.Remove_water.setHidden(False)
         self.Remove_sandwich.setHidden(False)
-    # cookie = 0.00
-    # sandwich = 0.00
-    # water = 0.00
-    # customer_total = 0.00
-    # cookie_amount = 0
-    # sandwich_amount = 0
-    # water_amount = 0
+    
 
     def cookie_add(self):
         '''everytime button is pressed add cookie'''
