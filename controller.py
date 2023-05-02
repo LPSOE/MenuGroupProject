@@ -28,13 +28,13 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.Remove_water.setHidden(True)
         self.Remove_sandwich.setHidden(True)
 
-        self.cookie = 0.00
-        self.sandwich = 0.00
-        self.water = 0.00
+        self.cookie = 0
+        self.sandwich = 0
+        self.water = 0
         self.customer_total = 0.00
-        self.cookie_amount = 0.00
-        self.sandwich_amount = 0.00
-        self.water_amount = 0.00
+        self.cookie_amount = int(0)
+        self.sandwich_amount = int(0)
+        self.water_amount = int(0)
 
     def menu(self):
         self.menulabel.setText(f"\n\n--CART MENU--\n\n ({self.cookie_amount})Cookie - $1.50\n ({self.sandwich_amount})Sandwich - $4.00\n ({self.water_amount})Water - $1.00")
@@ -56,35 +56,39 @@ class Controller(QMainWindow, Ui_LabMenu):
         '''everytime button is pressed add cookie'''
         self.cookie_amount += 1.5
         self.customer_total += 1.5
-
-
+        self.menulabel.setText(f"\n\n--CART MENU--\n\n ({self.cookie_amount})Cookie - $1.50\n ({self.sandwich_amount})Sandwich - $4.00\n ({self.water_amount})Water - $1.00")
 
     def water_add(self):
         '''everytime button is pressed add water'''
         self.water_amount += 1
         self.customer_total += 1
+        self.menulabel.setText(f"\n\n--CART MENU--\n\n ({self.cookie_amount})Cookie - $1.50\n ({self.sandwich_amount})Sandwich - $4.00\n ({self.water_amount})Water - $1.00")
 
     def sandwich_add(self):
         '''everytime button is pressed add sandwich'''
         self.sandwich_amount += 4
         self.customer_total += 4
+        self.menulabel.setText(f"\n\n--CART MENU--\n\n ({self.cookie_amount})Cookie - $1.50\n ({self.sandwich_amount})Sandwich - $4.00\n ({self.water_amount})Water - $1.00")
 
 
     def cookie_remove(self):
         '''everytime button is pressed remove cookie'''
         if self.cookie_amount >= 1.5:
             self.cookie_amount -= 1.5
-
+            self.customer_total -= 1.5
+            self.menulabel.setText(f"\n\n--CART MENU--\n\n ({self.cookie_amount})Cookie - $1.50\n ({self.sandwich_amount})Sandwich - $4.00\n ({self.water_amount})Water - $1.00")
 
     def water_remove(self):
         '''everytime button is pressed remove water'''
-        if self.water_amount >= 1:
-            self.water_amount -= 1
+        #if self.water_amount >= 1:
+        #    self.water_amount -= 1
+        #    self.customer_total -= 1
 
     def sandwich_remove(self):
         '''everytime button is pressed remove sandwich'''
-        if self.sandwich_amount >= 4:
-            self.water_amount -= 4
+        #if self.sandwich_amount >= 4:
+        #    self.sandwich_amount -= 4
+        #    self.customer_total -= 4
 
 
     def shop(self):
@@ -102,5 +106,5 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.Remove_sandwich.setHidden(True)
         self.menulabel.clear()
         self.ExitButton.setHidden(True)
-        self.ReceiptLabel.setText(f"Receipt\nTotal Amount \n cookie =${self.cookie_amount:.2f} \n water = \t ${self.water_amount:.2f} \n sandwich = ${self.sandwich_amount:.2f} \n total = ${self.customer_total:.2f}")
+        self.ReceiptLabel.setText(f"Receipt\nTotal Amount \n Cookie =${self.cookie_amount:.2f} \n Water = \t ${self.water_amount:.2f} \nSandwich = ${self.sandwich_amount:.2f} \n Total = ${self.customer_total:.2f}")
 
