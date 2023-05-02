@@ -93,7 +93,7 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.ExitButton.setHidden(False)
 
     def exit(self):
-        '''add up the total cost and label everything'''
+        '''add up the total cost and label everything''
         self.Add_cookie.setHidden(True)
         self.Add_water.setHidden(True)
         self.Add_sandwich.setHidden(True)
