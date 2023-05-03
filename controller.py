@@ -35,7 +35,8 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.cookie_amount = int(0)
         self.sandwich_amount = int(0)
         self.water_amount = int(0)
-
+        self.tax = float(0.10)
+        self.total_tax = float(0)
     def menu(self):
         self.menulabel.setText(f"\n\n--CART MENU--\n\n ({self.cookie_amount})Cookie - $1.50\n ({self.sandwich_amount})Sandwich - $4.00\n ({self.water_amount})Water - $1.00")
         self.Add_cookie.setHidden(False)
@@ -96,14 +97,15 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.ExitButton.setHidden(False)
 
     def receipt(self):
-
         self.customer_total = (self.cookie_amount * self.cookie) + (self.sandwich_amount * self.sandwich) + (
                     self.water_amount * self.water)
+        self.total_tax = self.customer_total * self.tax
         self.ReceiptLabel.setText(
             f"\tReceipt\n({self.cookie_amount})Cookie......................${self.cookie_amount * self.cookie:.2f}\n"
             f"({self.sandwich_amount})Sandwich......................${self.sandwich_amount * self.sandwich:.2f}\n"
             f"({self.water_amount})Water......................${self.water_amount * self.water:.2f}\n\n\n"
-            f"Total Amount................${self.customer_total:.2f}")
+            f"Tax 10%..........................${self.total_tax}\n"
+            f"Total Amount................${self.customer_total + self.total_tax:.2f}")
 
     def exit(self):
         '''add up the total cost and label everything'''
