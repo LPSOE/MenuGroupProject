@@ -104,7 +104,7 @@ class Controller(QMainWindow, Ui_LabMenu):
             f"\tReceipt\n({self.cookie_amount})Cookie......................${self.cookie_amount * self.cookie:.2f}\n"
             f"({self.sandwich_amount})Sandwich......................${self.sandwich_amount * self.sandwich:.2f}\n"
             f"({self.water_amount})Water......................${self.water_amount * self.water:.2f}\n\n\n"
-            f"Tax 10%..........................${self.total_tax}\n"
+            f"Tax 10%..........................${self.total_tax:.2f}\n"
             f"Total Amount................${self.customer_total + self.total_tax:.2f}")
 
     def exit(self):
