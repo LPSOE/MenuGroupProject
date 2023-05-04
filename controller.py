@@ -56,20 +56,29 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.lineEditSandwich.setHidden(False)
         self.lineEditWater.setHidden(False)
 
+        self.lineEditCookie.setText("0")
+        self.lineEditSandwich.setText("0")
+        self.lineEditWater.setText("0")
 
 
     def cookie_add(self):
         '''everytime button is pressed add cookie'''
         # self.cookie_amount += 1
         #converted text to int
-        ck = int(self.lineEditCookie.text())
-        self.lineEditCookie.setText(f"{ck * 2}")
-        self.menulabel.setText(f"\n\n--Lah's Bakery Menu--\n\n{ck * 2}     Cookie - $1.50\n\n     Sandwich - $4.00\n\n     Water - $1.00")
+        try:
+            ck = int(self.lineEditCookie.text())
+            self.lineEditCookie.setText(f"{ck + 1}")
+        except ValueError:
+            self.lineEditCookie.setText(f"Invalid")
+            self.lineEditCookie.setText("0")
+        # self.menulabel.setText(f"\n\n--Lah's Bakery Menu--\n\n{ck * 2}     Cookie - $1.50\n\n     Sandwich - $4.00\n\n     Water - $1.00")
 
     def water_add(self):
         '''everytime button is pressed add water'''
-        self.water_amount += 1
-        self.menulabel.setText(f"\n\n--Lah's Bakery Menu--\n\n     Cookie - $1.50\n\n     Sandwich - $4.00\n\n     Water - $1.00")
+        # wt = int(self.lineEditWater.text('0'))
+        # self.lineEditWater.setText(f"{wt + 1}")
+        # self.water_amount += 1
+        # self.menulabel.setText(f"\n\n--Lah's Bakery Menu--\n\n     Cookie - $1.50\n\n     Sandwich - $4.00\n\n     Water - $1.00")
 
     def sandwich_add(self):
         '''everytime button is pressed add sandwich'''
