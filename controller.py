@@ -27,9 +27,9 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.Remove_cookie.setHidden(True)
         self.Remove_water.setHidden(True)
         self.Remove_sandwich.setHidden(True)
-        self.lineEditCookie.setHidden(False)
-        self.lineEditSandwich.setHidden(False)
-        self.lineEditWater.setHidden(False)
+        self.lineEditCookie.setHidden(True)
+        self.lineEditSandwich.setHidden(True)
+        self.lineEditWater.setHidden(True)
 
         self.cookie = float(1.50)
         self.sandwich = float(4.00)
@@ -37,9 +37,11 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.customer_total = float(0.00)
         "Add an input for Quantity"
 
-        self.cookie_amount = 0
-        self.sandwich_amount = 0
-        self.water_amount = 0
+        # self.ck = int(self.lineEditCookie.text())
+        # self.Int_cookie = self.ck
+        # self.cookie_amount = 0
+        # self.sandwich_amount = 0
+        # self.water_amount = 0
         self.tax = float(0.10)
         self.total_tax = float(0)
     def menu(self):
@@ -50,33 +52,29 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.Remove_cookie.setHidden(False)
         self.Remove_water.setHidden(False)
         self.Remove_sandwich.setHidden(False)
+        self.lineEditCookie.setHidden(False)
+        self.lineEditSandwich.setHidden(False)
+        self.lineEditWater.setHidden(False)
 
-        # try:
-        #     cookie_amount = int(self.lineEditCookie.text())
-        #     sandwich_amount = int(self.lineEditSandwich.text())
-        #     water_amount = int(self.lineEditSandwich.text())
-        #     self.menulabel.setText(
-        #         f"\n\n--Lah's Bakery Menu--\n\n ({cookie_amount})Cookie - $1.50\n\n ({sandwich_amount})Sandwich - $4.00\n\n ({water_amount})Water - $1.00")
-        #
-        #
-        # except ValueError:
-        #     self.menulabel.setText(f"Invalid Entry")
 
 
     def cookie_add(self):
         '''everytime button is pressed add cookie'''
-        self.cookie_amount += 1
-        self.menulabel.setText(f"\n\n--Lah's Bakery Menu--\n\n ({self.cookie_amount})Cookie - $1.50\n\n ({self.sandwich_amount})Sandwich - $4.00\n\n ({self.water_amount})Water - $1.00")
+        # self.cookie_amount += 1
+        #converted text to int
+        ck = int(self.lineEditCookie.text())
+        self.lineEditCookie.setText(f"{ck * 2}")
+        self.menulabel.setText(f"\n\n--Lah's Bakery Menu--\n\n{ck * 2}     Cookie - $1.50\n\n     Sandwich - $4.00\n\n     Water - $1.00")
 
     def water_add(self):
         '''everytime button is pressed add water'''
         self.water_amount += 1
-        self.menulabel.setText(f"\n\n--Lah's Bakery Menu--\n\n ({self.cookie_amount})Cookie - $1.50\n\n ({self.sandwich_amount})Sandwich - $4.00\n\n ({self.water_amount})Water - $1.00")
+        self.menulabel.setText(f"\n\n--Lah's Bakery Menu--\n\n     Cookie - $1.50\n\n     Sandwich - $4.00\n\n     Water - $1.00")
 
     def sandwich_add(self):
         '''everytime button is pressed add sandwich'''
         self.sandwich_amount += 1
-        self.menulabel.setText(f"\n\n--Lah's Bakery Menu--\n\n ({self.cookie_amount})Cookie - $1.50\n\n ({self.sandwich_amount})Sandwich - $4.00\n\n ({self.water_amount})Water - $1.00")
+        self.menulabel.setText(f"\n\n--Lah's Bakery Menu--\n\n     Cookie - $1.50\n\n     Sandwich - $4.00\n\n     Water - $1.00")
 
 
     def cookie_remove(self):
@@ -86,7 +84,7 @@ class Controller(QMainWindow, Ui_LabMenu):
         else:
             self.cookie_amount -= 1
             self.menulabel.setText(
-                f"\n\n--Lah's Bakery Menu--\n\n ({self.cookie_amount})Cookie - $1.50\n\n ({self.sandwich_amount})Sandwich - $4.00\n\n ({self.water_amount})Water - $1.00")
+                f"\n\n--Lah's Bakery Menu--\n\n     Cookie - $1.50\n\n     Sandwich - $4.00\n\n     Water - $1.00")
 
     def water_remove(self):
         '''everytime button is pressed remove water'''
@@ -95,7 +93,7 @@ class Controller(QMainWindow, Ui_LabMenu):
         else:
             self.water_amount -= 1
             self.menulabel.setText(
-                f"\n\n--Lah's Bakery Menu--\n\n ({self.cookie_amount})Cookie - $1.50\n\n ({self.sandwich_amount})Sandwich - $4.00\n\n ({self.water_amount})Water - $1.00")
+                f"\n\n--Lah's Bakery Menu--\n\n     Cookie - $1.50\n\n     Sandwich - $4.00\n\n     Water - $1.00")
 
     def sandwich_remove(self):
         '''everytime button is pressed remove sandwich'''
@@ -104,7 +102,7 @@ class Controller(QMainWindow, Ui_LabMenu):
         else:
             self.sandwich_amount -= 1
             self.menulabel.setText(
-                f"\n\n--Lah's Bakery Menu--\n\n ({self.cookie_amount})Cookie - $1.50\n\n ({self.sandwich_amount})Sandwich - $4.00\n\n ({self.water_amount})Water - $1.00")
+                f"\n\n--Lah's Bakery Menu--\n\n     Cookie - $1.50\n\n     Sandwich - $4.00\n\n     Water - $1.00")
 
     def shop(self):
         self.menu()
@@ -115,12 +113,13 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.customer_total = (self.cookie_amount * self.cookie) + (self.sandwich_amount * self.sandwich) + (
                     self.water_amount * self.water)
         self.total_tax = self.customer_total * self.tax
-        self.ReceiptLabel.setText(
-            f"\t\t\tReceipt\n\t\t({self.cookie_amount})Cookie......................${self.cookie_amount * self.cookie:.2f}\n"
-            f"\t\t({self.sandwich_amount})Sandwich......................${self.sandwich_amount * self.sandwich:.2f}\n"
-            f"\t\t({self.water_amount})Water......................${self.water_amount * self.water:.2f}\n\n\n"
-            f"\t\tTax 10%..........................${self.total_tax:.2f}\n"
-            f"\t\tTotal Amount................${self.customer_total + self.total_tax:.2f}")
+        # self.ReceiptLabel.setText(
+        #     f"\t\t\tReceipt\n\t\t({self.cookie_amount})Cookie......................${self.cookie_amount * self.cookie:.2f}\n"
+        #     f"\t\t({self.sandwich_amount})Sandwich......................${self.sandwich_amount * self.sandwich:.2f}\n"
+        #     f"\t\t({self.water_amount})Water......................${self.water_amount * self.water:.2f}\n\n\n"
+        #     f"\t\tTax 10%..........................${self.total_tax:.2f}\n"
+        #     f"\t\tTotal Amount................${self.customer_total + self.total_tax:.2f}")
+
         self.lineEditCookie.setHidden(True)
         self.lineEditSandwich.setHidden(True)
         self.lineEditWater.setHidden(True)
