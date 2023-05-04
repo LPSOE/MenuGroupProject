@@ -36,6 +36,7 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.water = float(1.00)
         self.customer_total = float(0.00)
         "Add an input for Quantity"
+        self.customer_totalCookie = 0
 
         # self.ck = int(self.lineEditCookie.text())
         # self.Int_cookie = self.ck
@@ -63,55 +64,75 @@ class Controller(QMainWindow, Ui_LabMenu):
 
     def cookie_add(self):
         '''everytime button is pressed add cookie'''
-        # self.cookie_amount += 1
         #converted text to int
+
         try:
             ck = int(self.lineEditCookie.text())
-            self.lineEditCookie.setText(f"{ck + 1}")
+            if ck >= 500:
+                self.lineEditCookie.setText(f"{ck + 0}")
+            else:
+                self.lineEditCookie.setText(f"{ck + 1}")
+                int_cookie = self.lineEditCookie.setText(f"{ck + 1}")
+                # int(self.lineEditCookie.text(f"{ck + 1}"))
+                self.customer_totalCookie += int_cookie
         except ValueError:
-            self.lineEditCookie.setText(f"Invalid")
             self.lineEditCookie.setText("0")
-        # self.menulabel.setText(f"\n\n--Lah's Bakery Menu--\n\n{ck * 2}     Cookie - $1.50\n\n     Sandwich - $4.00\n\n     Water - $1.00")
 
     def water_add(self):
         '''everytime button is pressed add water'''
-        # wt = int(self.lineEditWater.text('0'))
-        # self.lineEditWater.setText(f"{wt + 1}")
-        # self.water_amount += 1
-        # self.menulabel.setText(f"\n\n--Lah's Bakery Menu--\n\n     Cookie - $1.50\n\n     Sandwich - $4.00\n\n     Water - $1.00")
+        try:
+            wt = int(self.lineEditWater.text())
+            if wt >= 500:
+                self.lineEditWater.setText(f"{wt + 0}")
+            else:
+                self.lineEditWater.setText(f"{wt + 1}")
+        except ValueError:
+            self.lineEditWater.setText("0")
 
     def sandwich_add(self):
         '''everytime button is pressed add sandwich'''
-        self.sandwich_amount += 1
-        self.menulabel.setText(f"\n\n--Lah's Bakery Menu--\n\n     Cookie - $1.50\n\n     Sandwich - $4.00\n\n     Water - $1.00")
+        try:
+            sd = int(self.lineEditSandwich.text())
+            if sd >= 500:
+                self.lineEditSandwich.setText(f"{sd + 0}")
+            else:
+                self.lineEditSandwich.setText(f"{sd + 1}")
+        except ValueError:
+            self.lineEditSandwich.setText("0")
 
 
     def cookie_remove(self):
         '''everytime button is pressed remove cookie'''
-        if self.cookie_amount <= 0:
-            self.cookie_amount -= 0
-        else:
-            self.cookie_amount -= 1
-            self.menulabel.setText(
-                f"\n\n--Lah's Bakery Menu--\n\n     Cookie - $1.50\n\n     Sandwich - $4.00\n\n     Water - $1.00")
+        try:
+            ck = int(self.lineEditCookie.text())
+            if ck <= 0:
+                self.lineEditCookie.setText(f"{ck - 0}")
+            else:
+                self.lineEditCookie.setText(f"{ck - 1}")
+        except ValueError:
+            self.lineEditCookie.setText("0")
 
     def water_remove(self):
         '''everytime button is pressed remove water'''
-        if self.water_amount <= 0:
-            self.water_amount -= 0
-        else:
-            self.water_amount -= 1
-            self.menulabel.setText(
-                f"\n\n--Lah's Bakery Menu--\n\n     Cookie - $1.50\n\n     Sandwich - $4.00\n\n     Water - $1.00")
+        try:
+            wt = int(self.lineEditWater.text())
+            if wt <= 0:
+                self.lineEditWater.setText(f"{wt - 0}")
+            else:
+                self.lineEditWater.setText(f"{wt - 1}")
+        except ValueError:
+            self.lineEditWater.setText("0")
 
     def sandwich_remove(self):
         '''everytime button is pressed remove sandwich'''
-        if self.sandwich_amount <= 0:
-            self.sandwich_amount -= 0
-        else:
-            self.sandwich_amount -= 1
-            self.menulabel.setText(
-                f"\n\n--Lah's Bakery Menu--\n\n     Cookie - $1.50\n\n     Sandwich - $4.00\n\n     Water - $1.00")
+        try:
+            sd = int(self.lineEditSandwich.text())
+            if sd <= 0:
+                self.lineEditSandwich.setText(f"{sd - 0}")
+            else:
+                self.lineEditSandwich.setText(f"{sd - 1}")
+        except ValueError:
+            self.lineEditSandwich.setText("0")
 
     def shop(self):
         self.menu()
@@ -119,9 +140,9 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.ExitButton.setHidden(False)
 
     def receipt(self):
-        self.customer_total = (self.cookie_amount * self.cookie) + (self.sandwich_amount * self.sandwich) + (
-                    self.water_amount * self.water)
-        self.total_tax = self.customer_total * self.tax
+        self.customer_total = self.customer_totalCookie * self.cookie
+        self.ReceiptLabel.setText(f"\t\t\tCookie............{self.customer_total:.2f}")
+        # self.total_tax = self.customer_total * self.tax
         # self.ReceiptLabel.setText(
         #     f"\t\t\tReceipt\n\t\t({self.cookie_amount})Cookie......................${self.cookie_amount * self.cookie:.2f}\n"
         #     f"\t\t({self.sandwich_amount})Sandwich......................${self.sandwich_amount * self.sandwich:.2f}\n"
