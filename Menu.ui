@@ -240,6 +240,63 @@
      <string>TextLabel</string>
     </property>
    </widget>
+   <widget class="QLabel" name="sandwichpix">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>380</y>
+      <width>151</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../Desktop/Screenshot 2023-05-11 at 5.15.05 PM.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="cookiepix">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>380</y>
+      <width>161</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../Desktop/Screenshot 2023-05-11 at 5.14.46 PM.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="waterpix">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>30</y>
+      <width>111</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../Desktop/Screenshot 2023-05-11 at 5.14.24 PM.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -250,8 +307,20 @@
      <height>24</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menucolors">
+    <property name="title">
+     <string>colors</string>
+    </property>
+    <addaction name="actioncolors"/>
+   </widget>
+   <addaction name="menucolors"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actioncolors">
+   <property name="text">
+    <string>colors</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
