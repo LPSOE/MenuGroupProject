@@ -76,7 +76,6 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.receipt()
 
 
-
     def receipt(self):
         self.ReceiptLabel.setHidden(False)
         self.cookie_label.setHidden(True)
@@ -93,11 +92,22 @@ class Controller(QMainWindow, Ui_LabMenu):
             self.cookie_amount = int(self.lineEditCookie.text())
             self.sandwich_amount = int(self.lineEditSandwich.text())
             self.water_amount = int(self.lineEditWater.text())
-            self.customer_total = self.cookie_amount + self.sandwich_amount + self.water_amount
-            self.ReceiptLabel.setText(f"{self.customer_total}")
+            self.formula()
         except ValueError:
             self.error_handling()
             self.Error_label.setText(" Invalid Entry:\n Numbers Only")
+
+    def formula(self):
+    #Tally up all the customer order and taxes
+        self.customer_total = (self.cookie_amount * self.cookie) + (self.sandwich_amount * self.sandwich) + (self.water_amount * self.water)
+        self.total_tax = self.tax * self.customer_total
+        self.ReceiptLabel.setText(f"\t\tReceipt\n\n"
+                                  f"({self.cookie_amount})Cookie(s)______________________${self.cookie_amount * self.cookie:.2f}\n"
+                                  f"({self.sandwich_amount})Sandwich(s)____________________${self.sandwich_amount * self.sandwich:.2f}\n"
+                                  f"({self.water_amount})Water(s)_______________________${self.water_amount * self.water:.2f}\n"
+                                  f"\n\n\n\n\n"
+                                  f"Tax_____________________________{self.tax:.2f}%\n"
+                                  f"Total Amount______________________${self.customer_total + self.total_tax:.2f}")
 
     def error_handling(self):
         self.menu()

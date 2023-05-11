@@ -44,7 +44,7 @@ class Ui_LabMenu(object):
         self.ExitButton.setFont(font)
         self.ExitButton.setObjectName("ExitButton")
         self.ReceiptLabel = QtWidgets.QLabel(self.centralwidget)
-        self.ReceiptLabel.setGeometry(QtCore.QRect(70, 20, 411, 311))
+        self.ReceiptLabel.setGeometry(QtCore.QRect(120, 90, 411, 311))
         font = QtGui.QFont()
         font.setPointSize(15)
         self.ReceiptLabel.setFont(font)
