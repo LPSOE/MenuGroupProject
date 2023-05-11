@@ -27,6 +27,7 @@ class Controller(QMainWindow, Ui_LabMenu):
 
         self.Error_label.setHidden(True)
 
+
         self.cookie = float(1.50)
         self.sandwich = float(4.00)
         self.water = float(1.00)
@@ -43,9 +44,9 @@ class Controller(QMainWindow, Ui_LabMenu):
 
         self.menulabel.setText(f"\n\n--Lah's Bakery Menu--\n\n     Cookie - $1.50\n\n     Sandwich - $4.00\n\n     Water - $1.00")
     #Zero as placeholder
-        self.lineEditCookie.setText('0')
-        self.lineEditSandwich.setText('0')
-        self.lineEditWater.setText('0')
+        # self.lineEditCookie.setText('0')
+        # self.lineEditSandwich.setText('0')
+        # self.lineEditWater.setText('0')
     #Show Line Edit
         self.lineEditCookie.setHidden(False)
         self.lineEditSandwich.setHidden(False)
@@ -95,7 +96,7 @@ class Controller(QMainWindow, Ui_LabMenu):
             self.formula()
         except ValueError:
             self.error_handling()
-            self.Error_label.setText(" Invalid Entry:\n Numbers Only")
+            self.Error_label.setText("Cookie, Sandwich,\n and Water\nNeed to be numeric\nEnter: 0 for Item\n Not Wanted")
 
     def formula(self):
     #Tally up all the customer order and taxes
