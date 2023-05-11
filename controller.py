@@ -42,10 +42,6 @@ class Controller(QMainWindow, Ui_LabMenu):
     def menu(self):
 
         self.menulabel.setText(f"\n\n--Lah's Bakery Menu--\n\n     Cookie - $1.50\n\n     Sandwich - $4.00\n\n     Water - $1.00")
-    #Zero as placeholder
-        # self.lineEditCookie.setText('0')
-        # self.lineEditSandwich.setText('0')
-        # self.lineEditWater.setText('0')
     #Show Line Edit
         self.lineEditCookie.setHidden(False)
         self.lineEditSandwich.setHidden(False)
@@ -110,6 +106,7 @@ class Controller(QMainWindow, Ui_LabMenu):
                                   f"Total Amount______________________${self.customer_total + self.total_tax:.2f}")
 
     def error_handling(self):
+    #if String and Float entered error_handling will be initiated
         self.menu()
         self.ExitButton.setHidden(False)
         self.cookie_label.setHidden(False)
