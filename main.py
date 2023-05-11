@@ -4,9 +4,7 @@ from controller import *
 'Feedback'
 'ToDo Add Edit to Quantity'
 
-#Choose
-'ToDo Third Project TV Remote'
-'ToDo Shape'
+
 def main():
     app = QApplication([])
     window = Controller()
