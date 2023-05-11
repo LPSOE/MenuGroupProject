@@ -64,6 +64,10 @@ class Controller(QMainWindow, Ui_LabMenu):
 
         self.Error_label.setHidden(False)
 
+        self.waterpix.setHidden(True)
+        self.sandwichpix.setHidden(True)
+        self.cookiepix.setHidden(True)
+
         self.cookie_label.setHidden(True)
         self.sandwich_label.setHidden(True)
         self.water_label.setHidden(True)
