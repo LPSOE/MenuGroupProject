@@ -11,7 +11,6 @@ class Controller(QMainWindow, Ui_LabMenu):
         self.ExitButton.clicked.connect(lambda: self.exit())
 
 
-
         self.menulabel.setText(f"               Welcome \n\n\n              Customers!")
 
         self.SHOPButton.setHidden(False)
@@ -96,7 +95,7 @@ class Controller(QMainWindow, Ui_LabMenu):
             self.formula()
         except ValueError:
             self.error_handling()
-            self.Error_label.setText("Cookie, Sandwich,\n and Water\nNeed to be numeric\nEnter: 0 for Item\n Not Wanted")
+            self.Error_label.setText("Error Message: \nCookie, Sandwich,\n and Water\nNeed to be numeric\nEnter: 0 for Item\n Not Wanted")
 
     def formula(self):
     #Tally up all the customer order and taxes
